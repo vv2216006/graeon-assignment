@@ -6,6 +6,7 @@ What I built
   each frame, and stores the results in SQLite (results.db).
 - app.py: Flask page that shows the OCR results, a "most frequent readings"
   table, and a button to download an Excel report (All readings + Summary sheets).
+- Check.py: small helper I used to test whether the videos open.
 
 How to run
 1. pip install -r requirements.txt
@@ -14,23 +15,21 @@ How to run
 
 What the videos show
 Handheld clips of steel bars with numbers written on them in chalk
-(for example B/02535). Both videos are processed and the video name is stored.
+(for example B/02535). I wasn't sure which clip was the official video, so
+ocr.py processes both and stores the video name with each reading.
+File names (video.mp3.mp4, video.mp4.mp4) are kept as-is because ocr.py
+uses them.
 
 Issues / limitations
 - Chalk on rough steel plus camera motion makes OCR noisy. Many readings are
-  partial or wrong (for example 0525 instead of 02535).
+  partial or wrong.
 - My first attempt used contrast enhancement and a digits-only filter. It gave
   far fewer readings, so I removed it and kept a simple version: confidence
-  threshold 0.20 and only keep text containing a digit.
-- The second video is blurrier and gives weaker results.
+  threshold 0.20, and only keep text containing a digit.
+- The second video is blurrier, with small marks, so it is harder to read.
 - Runs on CPU only, so the OCR step takes a few minutes.
 
 What I would do next
 - Detect and crop the bar surfaces before OCR.
 - Combine readings across frames (voting) to get one clean number per bar.
 - Try a model trained for handwriting or scene text.
-
-What the videos show
-I wasn't sure which clip was the official video, so I processed both.
-File names (video.mp3.mp4, video.mp4.mp4) are kept as-is because ocr.py uses them.
-Check.py is a small helper I used to test whether the videos open.
