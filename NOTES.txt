@@ -29,3 +29,8 @@ What I would do next
 - Detect and crop the bar surfaces before OCR.
 - Combine readings across frames (voting) to get one clean number per bar.
 - Try a model trained for handwriting or scene text.
+
+What the videos show
+I wasn't sure which clip was the official video, so I processed both.
+File names (video.mp3.mp4, video.mp4.mp4) are kept as-is because ocr.py uses them.
+Check.py is a small helper I used to test whether the videos open.
